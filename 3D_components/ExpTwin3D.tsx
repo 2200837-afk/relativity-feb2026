@@ -20,7 +20,7 @@ export const ExpTwin3D: React.FC<ExpTwin3DProps> = ({ startInAR = false }) => {
 
   // Analytics
   usePageTracking("ExpTwinParadox");
-  useARTracking("ExpTwinParadox", arMode);
+  useARSession("ExpTwinParadox", arMode);
   const { trackSlider } = useAnalytics();
   
   // Refs

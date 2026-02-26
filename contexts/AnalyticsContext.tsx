@@ -106,7 +106,7 @@ export const usePageTracking = (pageName: string) => {
   }, [pageName]);
 };
 
-export const useARTracking = (featureId: string, isARActive: boolean) => {
+export const useARSession = (featureId: string, isARActive: boolean) => {
   const { trackARInteraction } = useAnalytics();
   const startTimeRef = useRef<number | null>(null);
 

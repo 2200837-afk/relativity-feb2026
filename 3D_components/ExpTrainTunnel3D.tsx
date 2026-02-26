@@ -21,8 +21,8 @@ export const ExpTrainTunnel3D: React.FC<ExpTrainTunnel3DProps> = ({ startInAR = 
 
   // Analytics
   usePageTracking("ExpTrainTunnel");
-  useARTracking("ExpTrainTunnel", arMode);
-  const { trackSlider, trackClick } = useAnalytics();
+  useARSession("ExpTrainTunnel", arMode);
+  const { trackSlider } = useAnalytics();
 
   // Refs
   const mountRef = useRef<HTMLDivElement>(null);

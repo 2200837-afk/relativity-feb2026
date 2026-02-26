@@ -65,7 +65,7 @@ export const Simulation3D: React.FC<Simulation3DProps> = ({ velocity: propVeloci
 
   // Analytics Hook
   usePageTracking("WarpDriveSandbox");
-  useARTracking("WarpDriveSandbox", arMode);
+  useARSession("WarpDriveSandbox", arMode);
   const { trackSlider, trackClick } = useAnalytics();
 
   const mountRef = useRef<HTMLDivElement>(null);

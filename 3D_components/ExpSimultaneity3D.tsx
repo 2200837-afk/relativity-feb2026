@@ -5,7 +5,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Button } from '../components/Button';
 import { Play, RotateCcw, Camera, CameraOff, Info } from 'lucide-react';
 import { SpeechControl } from '../components/SpeechControl';
-import { usePageTracking, useARTracking, useAnalytics } from '../contexts/AnalyticsContext';
+import { usePageTracking, useARSession, useAnalytics } from '../contexts/AnalyticsContext';
 
 interface ExpSimultaneity3DProps {
   startInAR?: boolean;
@@ -23,7 +23,7 @@ export const ExpSimultaneity3D: React.FC<ExpSimultaneity3DProps> = ({ startInAR 
 
   // Analytics
   usePageTracking("ExpSimultaneity");
-  useARTracking("ExpSimultaneity", arMode);
+  useARSession("ExpSimultaneity", arMode);
   const { trackClick } = useAnalytics();
 
   // Three.js Refs

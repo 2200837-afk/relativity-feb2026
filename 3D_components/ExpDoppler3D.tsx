@@ -18,7 +18,7 @@ export const ExpDoppler3D: React.FC<ExpDoppler3DProps> = ({ startInAR = false })
 
   // Analytics
   usePageTracking("ExpDoppler");
-  useARTracking("ExpDoppler", arMode);
+  useARSession("ExpDoppler", arMode);
   const { trackSlider } = useAnalytics();
 
   const mountRef = useRef<HTMLDivElement>(null);
