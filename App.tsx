@@ -82,6 +82,11 @@ const AppContent: React.FC = () => {
   }
 
   const renderContent = () => {
+    // Scroll to top whenever content changes
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [currentMode]);
+
     switch (currentMode) {
       case ViewMode.HOME:
         return <Home setMode={setMode} />;
@@ -198,6 +203,7 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <HashRouter>
+       <ScrollToTop />
        <AnalyticsProvider>
           <Routes>
             <Route path="/" element={<AppContent />} />

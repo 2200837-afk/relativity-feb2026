@@ -116,17 +116,23 @@ export const ExpDoppler: React.FC = () => {
                         </div>
                         <div className="h-32 w-full flex items-center justify-center relative overflow-hidden bg-black/60 rounded-[24px] border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
                             {/* Animated Wave SVG */}
-                            <svg className="w-full h-full" viewBox="0 0 800 100">
+                            <svg className="w-full h-full" viewBox="0 0 800 100" preserveAspectRatio="none">
                                 <motion.path 
-                                  animate={{ d: `M 0 50 ${[...Array(40)].map((_, i) => `Q ${i * 20 + 10} ${i % 2 === 0 ? 20 : 80}, ${i * 20 + 20} 50`).join(' ')}` }}
+                                  animate={{ 
+                                    d: `M 0 50 ${[...Array(100)].map((_, i) => {
+                                        // Dynamic frequency based on wavelength
+                                        // Lower wavelength = Higher frequency = More peaks
+                                        const freq = 550 / observedWavelength; 
+                                        const x = i * 10;
+                                        const y = Math.sin(x * 0.05 * freq) * 30 + 50;
+                                        return `L ${x} ${y}`;
+                                    }).join(' ')}` 
+                                  }}
                                   fill="none" 
                                   stroke={colorHex} 
                                   strokeWidth="4"
                                   className="transition-all duration-700"
                                   style={{ 
-                                    strokeDasharray: '12, 6',
-                                    transform: `scaleX(${observedWavelength / 550})`,
-                                    transformOrigin: 'left',
                                     filter: `drop-shadow(0 0 15px ${colorHex})`
                                   }}
                                 />

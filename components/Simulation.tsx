@@ -141,7 +141,7 @@ export const Simulation: React.FC<SimulationProps> = ({ velocity, setVelocity, s
                     <Relativistic3DViewer velocity={velocity} gamma={gamma} />
                   </div>
               ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center p-12 relative overflow-hidden">
+                  <div className="w-full h-full min-h-[500px] flex flex-col items-center justify-center p-12 relative overflow-hidden">
                       <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)', backgroundSize: '48px 48px' }}></div>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent"></div>
                       
