@@ -82,11 +82,6 @@ const AppContent: React.FC = () => {
   }
 
   const renderContent = () => {
-    // Scroll to top whenever content changes
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [currentMode]);
-
     switch (currentMode) {
       case ViewMode.HOME:
         return <Home setMode={setMode} />;
@@ -106,6 +101,10 @@ const AppContent: React.FC = () => {
         return <Home setMode={setMode} />;
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentMode]);
 
   return (
       <div className="min-h-screen bg-space-900 text-slate-100 font-sans selection:bg-cyan-500/30 flex flex-col">
