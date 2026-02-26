@@ -105,3 +105,21 @@ export const usePageTracking = (pageName: string) => {
     trackPageView(pageName);
   }, [pageName]);
 };
+
+export const useARTracking = (featureId: string, isARActive: boolean) => {
+  const { trackARInteraction } = useAnalytics();
+  const startTimeRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (isARActive) {
+      startTimeRef.current = Date.now();
+      trackARInteraction(featureId, 'ar_session_start');
+    } else {
+      if (startTimeRef.current) {
+        const duration = (Date.now() - startTimeRef.current) / 1000;
+        trackARInteraction(featureId, `ar_session_end_duration_${duration.toFixed(1)}s`);
+        startTimeRef.current = null;
+      }
+    }
+  }, [isARActive, featureId]);
+};
